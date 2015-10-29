@@ -34,13 +34,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         } catch {
             print("Error")
         }
+        timeDurationSlider.value = 1600 // reset slider value
+        timeDurationLabel.text = "30" // reset label value
         retrieveRoomBookings()
         scheduleTableView.reloadData()
+        
+//        let range = NSMakeRange(0, self.scheduleTableView.numberOfSections)
+//        let sections = NSIndexSet(indexesInRange: range)
+//        self.scheduleTableView.reloadSections(sections, withRowAnimation: .Automatic)
+        
     }
     
     @IBAction func timeDurationSliderValue(sender: UISlider) {
         print(timeDurationSlider.value)
-        timeDurationLabel.text = String(timeDurationSlider.value / 60)
+        timeDurationLabel.text = String(Int(timeDurationSlider.value / 60))
 //        let addTime = timeDurationSlider.value
 //        let endTime = NSNumberFormatter(
     }
