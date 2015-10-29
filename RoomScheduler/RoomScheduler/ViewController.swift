@@ -85,6 +85,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         checkEKAuthorizationStatus(.Event)
         checkEKAuthorizationStatus(.Reminder)
+        
+        timeBeginDatePicker.minimumDate = NSDate() // TODO: Come back to this
+        
 
     }
 
