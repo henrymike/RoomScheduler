@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var timeBeginDatePicker  :UIDatePicker!
     @IBOutlet weak var timeDurationSlider   :UISlider!
     @IBOutlet weak var scheduleButton   :UIButton!
+    var scheduleArray = []
     let eventStore = EKEventStore()
 
     
@@ -49,6 +50,8 @@ class ViewController: UIViewController {
             for event in events {
                 print(event.title)
             }
+            scheduleArray = events
+            print(scheduleArray)
         }
     }
     
