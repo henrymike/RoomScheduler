@@ -67,8 +67,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CustomTableViewCell
         let booking = scheduleArray[indexPath.row]
         cell.eventTitleLabel.text = booking.title
-        cell.eventStartLabel.text = "Start Date"
-        cell.eventEndLabel.text = "End Date"
+        
+        let startDateFormatter = NSDateFormatter()
+        startDateFormatter.dateFormat = "hh:mm a"
+        cell.eventStartLabel.text = startDateFormatter.stringFromDate(booking.startDate)
+        
+        let endDateFormatter = NSDateFormatter()
+        endDateFormatter.dateFormat = "hh:mm a"
+        cell.eventEndLabel.text = endDateFormatter.stringFromDate(booking.endDate)
+        
+        
         
         return cell
     }
