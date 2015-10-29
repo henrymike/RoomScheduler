@@ -58,25 +58,74 @@
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" textLabel="rZX-Vl-xL9" style="IBUITableViewCellStyleDefault" id="6at-aO-5Tq">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="6at-aO-5Tq" customClass="CustomTableViewCell" customModule="RoomScheduler" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6at-aO-5Tq" id="BMe-Sj-nRm">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rZX-Vl-xL9">
-                                                    <rect key="frame" x="15" y="0.0" width="570" height="43"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Event Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4NJ-dh-1bf">
+                                                    <rect key="frame" x="58" y="8" width="365" height="21"/>
                                                     <animations/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="sBf-Ig-UHm"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Start Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QVf-OM-ebF">
+                                                    <rect key="frame" x="454" y="0.0" width="138" height="21"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="Yjp-Q6-eBl"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="End Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XXd-Vn-UOM">
+                                                    <rect key="frame" x="454" y="18" width="138" height="21"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="3t8-dm-Rw5"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="z8x-mE-GAP">
+                                                    <rect key="frame" x="15" y="1" width="35" height="35"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="35" id="HPs-kD-OLV"/>
+                                                        <constraint firstAttribute="width" constant="35" id="rm6-YZ-mOE"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <animations/>
+                                            <constraints>
+                                                <constraint firstItem="z8x-mE-GAP" firstAttribute="top" secondItem="BMe-Sj-nRm" secondAttribute="topMargin" constant="-7" id="2ke-93-g07"/>
+                                                <constraint firstAttribute="topMargin" secondItem="4NJ-dh-1bf" secondAttribute="top" id="QuY-We-e4s"/>
+                                                <constraint firstItem="QVf-OM-ebF" firstAttribute="leading" secondItem="4NJ-dh-1bf" secondAttribute="trailing" constant="31" id="RFV-GU-w0I"/>
+                                                <constraint firstItem="4NJ-dh-1bf" firstAttribute="leading" secondItem="z8x-mE-GAP" secondAttribute="trailing" constant="8" id="UN6-n1-Kl3"/>
+                                                <constraint firstItem="XXd-Vn-UOM" firstAttribute="width" secondItem="QVf-OM-ebF" secondAttribute="width" id="Ujb-jo-2LH"/>
+                                                <constraint firstItem="z8x-mE-GAP" firstAttribute="leading" secondItem="BMe-Sj-nRm" secondAttribute="leadingMargin" constant="7" id="Z9p-qU-QCJ"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="QVf-OM-ebF" secondAttribute="trailing" id="ejr-uh-zj1"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="XXd-Vn-UOM" secondAttribute="trailing" id="hHw-Sa-cc1"/>
+                                                <constraint firstItem="XXd-Vn-UOM" firstAttribute="leading" secondItem="4NJ-dh-1bf" secondAttribute="trailing" constant="31" id="opP-qg-vd6"/>
+                                                <constraint firstItem="XXd-Vn-UOM" firstAttribute="top" secondItem="QVf-OM-ebF" secondAttribute="bottom" constant="-3" id="wkY-F4-ovR"/>
+                                                <constraint firstItem="QVf-OM-ebF" firstAttribute="top" secondItem="BMe-Sj-nRm" secondAttribute="topMargin" constant="-8" id="xvK-kH-YF6"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
+                                        <connections>
+                                            <outlet property="dayImage" destination="z8x-mE-GAP" id="FVC-Ht-Dei"/>
+                                            <outlet property="eventEndLabel" destination="XXd-Vn-UOM" id="ulq-wq-PQl"/>
+                                            <outlet property="eventStartLabel" destination="QVf-OM-ebF" id="ZxQ-CB-FxA"/>
+                                            <outlet property="eventTitleLabel" destination="4NJ-dh-1bf" id="WUf-Lx-3BU"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -97,15 +146,10 @@
                             <constraint firstAttribute="trailingMargin" secondItem="LPa-jM-wTc" secondAttribute="trailing" constant="-20" id="pdU-bI-0S1"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="YNz-nb-H8J">
-                        <barButtonItem key="leftBarButtonItem" title="Retrieve Bookings" id="78t-Bp-7hH">
-                            <connections>
-                                <action selector="retrieveRoomBookings" destination="BYZ-38-t0r" id="x7K-Lk-d8g"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="YNz-nb-H8J"/>
                     <connections>
                         <outlet property="scheduleButton" destination="Ri9-rk-JyH" id="UfC-DC-Ebe"/>
+                        <outlet property="scheduleTableView" destination="LPa-jM-wTc" id="beb-Ca-Btc"/>
                         <outlet property="timeBeginDatePicker" destination="yXU-RZ-y8e" id="KgM-gn-Ey5"/>
                         <outlet property="timeDurationSlider" destination="pAe-L5-99D" id="sz1-Nz-jw9"/>
                     </connections>

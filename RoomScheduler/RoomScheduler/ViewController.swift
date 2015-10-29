@@ -13,7 +13,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var timeBeginDatePicker  :UIDatePicker!
     @IBOutlet weak var timeDurationSlider   :UISlider!
-    @IBOutlet weak var scheduleButton   :UIButton!
+    @IBOutlet weak var scheduleButton       :UIButton!
+    @IBOutlet weak var scheduleTableView    :UITableView!
     var scheduleArray = []
     let eventStore = EKEventStore()
 
@@ -32,6 +33,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         } catch {
             print("Error")
         }
+        scheduleTableView.reloadData()
     }
     
     @IBAction func timeDurationSliderValue(sender: UISlider) {
@@ -40,7 +42,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //        let endTime = NSNumberFormatter(
     }
     
-    @IBAction func retrieveRoomBookings() {
+    func retrieveRoomBookings() {
         let calendars = eventStore.calendarsForEntityType(.Event)
         let startDate = NSDate() // time starting now
         let endDate = NSDate(timeIntervalSinceNow: 604800) // 7 days in advance
@@ -62,10 +64,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CustomTableViewCell
         let booking = scheduleArray[indexPath.row]
-//        cell.textLabel!.text = "Test"
-        cell.textLabel!.text = booking.title
+        cell.eventTitleLabel.text = booking.title
+        cell.eventStartLabel.text = "Start Date"
+        cell.eventEndLabel.text = "End Date"
+        
         return cell
     }
     
