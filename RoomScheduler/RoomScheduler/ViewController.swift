@@ -9,7 +9,7 @@
 import UIKit
 import EventKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var timeBeginDatePicker  :UIDatePicker!
     @IBOutlet weak var timeDurationSlider   :UISlider!
@@ -55,6 +55,20 @@ class ViewController: UIViewController {
         }
     }
     
+    //MARK: - Table View Methods
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return scheduleArray.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
+        let booking = scheduleArray[indexPath.row]
+//        cell.textLabel!.text = "Test"
+        cell.textLabel!.text = booking.title
+        return cell
+    }
+    
     
     //MARK: - Permission Methods
 
@@ -88,6 +102,9 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         checkEKAuthorizationStatus(.Event)
         checkEKAuthorizationStatus(.Reminder)
+        
+        retrieveRoomBookings()
+        
         
         timeBeginDatePicker.minimumDate = NSDate() // TODO: Come back to this
         
