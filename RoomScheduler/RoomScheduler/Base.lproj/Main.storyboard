@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Room Scheduler-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="RoomScheduler" customModuleProvider="target" sceneMemberID="viewController">
@@ -21,10 +21,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tlE-TW-9gG">
                                 <rect key="frame" x="0.0" y="64" width="600" height="250"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ri9-rk-JyH">
-                                        <rect key="frame" x="86" y="199" width="165" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ri9-rk-JyH">
+                                        <rect key="frame" x="0.0" y="192" width="600" height="60"/>
                                         <animations/>
                                         <color key="backgroundColor" red="0.62423058710000001" green="0.62423058710000001" blue="0.62423058710000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="dD8-xu-yda"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <state key="normal" title="Schedule It">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         </state>
@@ -32,23 +36,32 @@
                                             <action selector="newRoomBooking:" destination="BYZ-38-t0r" eventType="touchUpInside" id="b36-5E-F7n"/>
                                         </connections>
                                     </button>
-                                    <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="yXU-RZ-y8e">
-                                        <rect key="frame" x="20" y="20" width="304" height="118"/>
+                                    <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="yXU-RZ-y8e">
+                                        <rect key="frame" x="8" y="20" width="584" height="118"/>
                                         <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="118" id="xGW-PE-OpB"/>
+                                        </constraints>
                                         <date key="date" timeIntervalSinceReferenceDate="467833168.11498201">
                                             <!--2015-10-29 17:39:28 +0000-->
                                         </date>
                                     </datePicker>
-                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1800" minValue="0.0" maxValue="28800" translatesAutoresizingMaskIntoConstraints="NO" id="pAe-L5-99D">
-                                        <rect key="frame" x="31" y="154" width="275" height="31"/>
+                                    <slider opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1800" minValue="0.0" maxValue="28800" translatesAutoresizingMaskIntoConstraints="NO" id="pAe-L5-99D">
+                                        <rect key="frame" x="31" y="154" width="454" height="31"/>
                                         <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="ulb-x8-cuK"/>
+                                        </constraints>
                                         <connections>
                                             <action selector="timeDurationSliderValue:" destination="BYZ-38-t0r" eventType="valueChanged" id="6pd-wU-H2G"/>
                                         </connections>
                                     </slider>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3JA-ZN-DR1">
-                                        <rect key="frame" x="325" y="158" width="66" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3JA-ZN-DR1">
+                                        <rect key="frame" x="526" y="158" width="66" height="21"/>
                                         <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="oEa-8a-f8t"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -58,6 +71,17 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="42X-Db-iIM"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ri9-rk-JyH" secondAttribute="trailing" id="6b1-tQ-1wa"/>
+                                    <constraint firstItem="Ri9-rk-JyH" firstAttribute="top" secondItem="pAe-L5-99D" secondAttribute="bottom" constant="8" id="9kj-gb-FRp"/>
+                                    <constraint firstAttribute="trailing" secondItem="yXU-RZ-y8e" secondAttribute="trailing" constant="8" id="E8i-PY-Zii"/>
+                                    <constraint firstItem="pAe-L5-99D" firstAttribute="leading" secondItem="tlE-TW-9gG" secondAttribute="leading" constant="33" id="FR3-dO-0EC"/>
+                                    <constraint firstItem="3JA-ZN-DR1" firstAttribute="top" secondItem="yXU-RZ-y8e" secondAttribute="bottom" constant="20" id="Fjs-U8-4Ag"/>
+                                    <constraint firstItem="yXU-RZ-y8e" firstAttribute="leading" secondItem="tlE-TW-9gG" secondAttribute="leading" constant="8" id="KIv-TH-cBP"/>
+                                    <constraint firstItem="3JA-ZN-DR1" firstAttribute="leading" secondItem="pAe-L5-99D" secondAttribute="trailing" constant="43" id="Nty-ZB-QdO"/>
+                                    <constraint firstAttribute="trailing" secondItem="3JA-ZN-DR1" secondAttribute="trailing" constant="8" id="Qh6-Op-MbQ"/>
+                                    <constraint firstItem="yXU-RZ-y8e" firstAttribute="top" secondItem="tlE-TW-9gG" secondAttribute="top" constant="20" id="cJ6-5N-vAw"/>
+                                    <constraint firstItem="pAe-L5-99D" firstAttribute="top" secondItem="yXU-RZ-y8e" secondAttribute="bottom" constant="16" id="fTd-Tf-x0V"/>
+                                    <constraint firstItem="Ri9-rk-JyH" firstAttribute="leading" secondItem="tlE-TW-9gG" secondAttribute="leading" id="gOm-3l-BJm"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LPa-jM-wTc">
@@ -153,7 +177,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="LPa-jM-wTc" secondAttribute="trailing" constant="-20" id="pdU-bI-0S1"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="YNz-nb-H8J"/>
+                    <navigationItem key="navigationItem" title="Room Scheduler" id="YNz-nb-H8J"/>
                     <connections>
                         <outlet property="scheduleButton" destination="Ri9-rk-JyH" id="UfC-DC-Ebe"/>
                         <outlet property="scheduleTableView" destination="LPa-jM-wTc" id="beb-Ca-Btc"/>

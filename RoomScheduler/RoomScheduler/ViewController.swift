@@ -80,30 +80,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         endDateFormatter.dateFormat = "hh:mm a"
         cell.eventEndLabel.text = endDateFormatter.stringFromDate(booking.endDate)
         
-        
-        
         let dayFormatter = NSDateFormatter()
         dayFormatter.dateFormat = "EEEE"
-//        print(dayFormatter.stringFromDate(booking.startDate))
-        
         let dayIcon = dayFormatter.stringFromDate(booking.startDate)
-        print("DayIcon:\(dayIcon)")
-        
         let dayDisplay = UIImage(named: "icon_\(dayIcon)")
-        print("DayDisplay:\(dayDisplay)")
-        
-        
-//        let dayMonday = UIImage(named: "icon_monday")
-//        cell.dayImage.image = dayMonday
         cell.dayImage.image = dayDisplay
         
         return cell
     }
-    
-//    func returnDaysforImage (date: NSDate) -> String {
-//        print("Day")
-//        
-//    }
     
     
     //MARK: - Permission Methods
