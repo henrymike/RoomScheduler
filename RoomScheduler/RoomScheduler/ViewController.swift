@@ -13,6 +13,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBOutlet weak var timeBeginDatePicker  :UIDatePicker!
     @IBOutlet weak var timeDurationSlider   :UISlider!
+    @IBOutlet weak var timeDurationLabel    :UILabel!
     @IBOutlet weak var scheduleButton       :UIButton!
     @IBOutlet weak var scheduleTableView    :UITableView!
     var scheduleArray = []
@@ -33,11 +34,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         } catch {
             print("Error")
         }
+        retrieveRoomBookings()
         scheduleTableView.reloadData()
     }
     
     @IBAction func timeDurationSliderValue(sender: UISlider) {
         print(timeDurationSlider.value)
+        timeDurationLabel.text = String(timeDurationSlider.value / 60)
 //        let addTime = timeDurationSlider.value
 //        let endTime = NSNumberFormatter(
     }
@@ -53,7 +56,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 print(event.title)
             }
             scheduleArray = events
-            print(scheduleArray)
+//            print(scheduleArray)
         }
     }
     
@@ -66,6 +69,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! CustomTableViewCell
         let booking = scheduleArray[indexPath.row]
+        
         cell.eventTitleLabel.text = booking.title
         
         let startDateFormatter = NSDateFormatter()
@@ -78,8 +82,28 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         
         
+        let dayFormatter = NSDateFormatter()
+        dayFormatter.dateFormat = "EEEE"
+//        print(dayFormatter.stringFromDate(booking.startDate))
+        
+        let dayIcon = dayFormatter.stringFromDate(booking.startDate)
+        print("DayIcon:\(dayIcon)")
+        
+        let dayDisplay = UIImage(named: "icon_\(dayIcon)")
+        print("DayDisplay:\(dayDisplay)")
+        
+        
+//        let dayMonday = UIImage(named: "icon_monday")
+//        cell.dayImage.image = dayMonday
+        cell.dayImage.image = dayDisplay
+        
         return cell
     }
+    
+//    func returnDaysforImage (date: NSDate) -> String {
+//        print("Day")
+//        
+//    }
     
     
     //MARK: - Permission Methods
@@ -130,4 +154,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
 
 }
+
+
+/// do a search just like we do when we fetch the array, except if we return greater than 0, don't allow the event to be saved; use in-class example if needed
 

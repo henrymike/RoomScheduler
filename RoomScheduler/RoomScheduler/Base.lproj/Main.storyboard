@@ -46,6 +46,13 @@
                                             <action selector="timeDurationSliderValue:" destination="BYZ-38-t0r" eventType="valueChanged" id="6pd-wU-H2G"/>
                                         </connections>
                                     </slider>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3JA-ZN-DR1">
+                                        <rect key="frame" x="325" y="158" width="66" height="21"/>
+                                        <animations/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -66,7 +73,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Event Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4NJ-dh-1bf">
-                                                    <rect key="frame" x="58" y="8" width="365" height="21"/>
+                                                    <rect key="frame" x="58" y="11" width="365" height="21"/>
                                                     <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="sBf-Ig-UHm"/>
@@ -96,7 +103,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="z8x-mE-GAP">
-                                                    <rect key="frame" x="15" y="1" width="35" height="35"/>
+                                                    <rect key="frame" x="15" y="3" width="35" height="35"/>
                                                     <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="35" id="HPs-kD-OLV"/>
@@ -106,8 +113,8 @@
                                             </subviews>
                                             <animations/>
                                             <constraints>
-                                                <constraint firstItem="z8x-mE-GAP" firstAttribute="top" secondItem="BMe-Sj-nRm" secondAttribute="topMargin" constant="-7" id="2ke-93-g07"/>
-                                                <constraint firstAttribute="topMargin" secondItem="4NJ-dh-1bf" secondAttribute="top" id="QuY-We-e4s"/>
+                                                <constraint firstItem="z8x-mE-GAP" firstAttribute="top" secondItem="BMe-Sj-nRm" secondAttribute="topMargin" constant="-5" id="2ke-93-g07"/>
+                                                <constraint firstAttribute="topMargin" secondItem="4NJ-dh-1bf" secondAttribute="top" constant="-3" id="QuY-We-e4s"/>
                                                 <constraint firstItem="QVf-OM-ebF" firstAttribute="leading" secondItem="4NJ-dh-1bf" secondAttribute="trailing" constant="31" id="RFV-GU-w0I"/>
                                                 <constraint firstItem="4NJ-dh-1bf" firstAttribute="leading" secondItem="z8x-mE-GAP" secondAttribute="trailing" constant="8" id="UN6-n1-Kl3"/>
                                                 <constraint firstItem="XXd-Vn-UOM" firstAttribute="width" secondItem="QVf-OM-ebF" secondAttribute="width" id="Ujb-jo-2LH"/>
@@ -151,6 +158,7 @@
                         <outlet property="scheduleButton" destination="Ri9-rk-JyH" id="UfC-DC-Ebe"/>
                         <outlet property="scheduleTableView" destination="LPa-jM-wTc" id="beb-Ca-Btc"/>
                         <outlet property="timeBeginDatePicker" destination="yXU-RZ-y8e" id="KgM-gn-Ey5"/>
+                        <outlet property="timeDurationLabel" destination="3JA-ZN-DR1" id="wID-oh-FcX"/>
                         <outlet property="timeDurationSlider" destination="pAe-L5-99D" id="sz1-Nz-jw9"/>
                     </connections>
                 </viewController>
