@@ -17,15 +17,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="pAe-L5-99D">
-                                <rect key="frame" x="18" y="124" width="118" height="31"/>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="30" minValue="0.0" maxValue="120" translatesAutoresizingMaskIntoConstraints="NO" id="pAe-L5-99D">
+                                <rect key="frame" x="11" y="212" width="275" height="31"/>
                                 <animations/>
+                                <connections>
+                                    <action selector="timeDurationSliderValue:" destination="BYZ-38-t0r" eventType="valueChanged" id="6pd-wU-H2G"/>
+                                </connections>
                             </slider>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="yXU-RZ-y8e">
+                                <rect key="frame" x="0.0" y="78" width="304" height="118"/>
+                                <animations/>
+                                <date key="date" timeIntervalSinceReferenceDate="467833168.11498201">
+                                    <!--2015-10-29 17:39:28 +0000-->
+                                </date>
+                            </datePicker>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ri9-rk-JyH">
+                                <rect key="frame" x="66" y="257" width="165" height="30"/>
+                                <animations/>
+                                <color key="backgroundColor" red="0.62423058710000001" green="0.62423058710000001" blue="0.62423058710000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Schedule It">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="newRoomBooking:" destination="BYZ-38-t0r" eventType="touchUpInside" id="b36-5E-F7n"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="YNz-nb-H8J"/>
+                    <navigationItem key="navigationItem" id="YNz-nb-H8J">
+                        <barButtonItem key="leftBarButtonItem" title="Retrieve Bookings" id="78t-Bp-7hH">
+                            <connections>
+                                <action selector="retrieveRoomBookings" destination="BYZ-38-t0r" id="x7K-Lk-d8g"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="scheduleButton" destination="Ri9-rk-JyH" id="UfC-DC-Ebe"/>
+                        <outlet property="timeBeginDatePicker" destination="yXU-RZ-y8e" id="KgM-gn-Ey5"/>
+                        <outlet property="timeDurationSlider" destination="pAe-L5-99D" id="sz1-Nz-jw9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
