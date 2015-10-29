@@ -25,8 +25,7 @@ class ViewController: UIViewController {
         roomEvent.calendar = eventStore.defaultCalendarForNewEvents
         roomEvent.title = "Reserved Event"
         roomEvent.startDate = timeBeginDatePicker.date
-        roomEvent.endDate = NSDate(timeIntervalSinceNow: 4000)
-//        roomEvent.endDate = timeDurationSlider.value //TODO: create method to convert value to date
+        roomEvent.endDate = NSDate().dateByAddingTimeInterval(Double(timeDurationSlider.value))
         do {
             try eventStore.saveEvent(roomEvent, span: .ThisEvent, commit: true)
         } catch {
@@ -36,6 +35,8 @@ class ViewController: UIViewController {
     
     @IBAction func timeDurationSliderValue(sender: UISlider) {
         print(timeDurationSlider.value)
+//        let addTime = timeDurationSlider.value
+//        let endTime = NSNumberFormatter(
     }
     
     @IBAction func retrieveRoomBookings() {
