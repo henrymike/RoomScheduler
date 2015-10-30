@@ -241,10 +241,10 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="9kj-gb-FRp"/>
                                         <exclude reference="Fjs-U8-4Ag"/>
                                         <exclude reference="Nty-ZB-QdO"/>
                                         <exclude reference="Qh6-Op-MbQ"/>
-                                        <exclude reference="9kj-gb-FRp"/>
                                         <exclude reference="FR3-dO-0EC"/>
                                         <exclude reference="fTd-Tf-x0V"/>
                                     </mask>

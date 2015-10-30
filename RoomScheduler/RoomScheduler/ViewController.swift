@@ -24,10 +24,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //MARK: - Display Methods
     
     func setIntroText (sender: UILabel) {
-//        introTextLabel.text = "Book a Room \nchoose a date and time to get started"
-//    }
-//    
-//    func createAttributedString() {
         let introMuteString = NSMutableAttributedString()
         let font1 = UIFont(name: "HelveticaNeue", size: 16.0)
         let attrib1 = [NSFontAttributeName: font1!]
@@ -40,7 +36,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         introMuteString.appendAttributedString(subtitleAttribString)
         
         introTextLabel.attributedText = introMuteString
-        
     }
     
     
@@ -48,49 +43,75 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBAction func newRoomBooking(sender: UIButton) {
         print("Schedule It button pressed")
+        
+        // check for calendar entity
+        let calendars = eventStore.calendarsForEntityType(.Event)
+        let filteredCalendars = calendars.filter {$0.title == "TIY Meeting Rooms"}
+        if filteredCalendars.isEmpty {
+            print("No TIY calendar found")
+            createNewCalendar() // create a new calendar first, then
+            createNewEvent() // create new event
+        } else {
+            print("TIY Calendar found")
+            createNewEvent() // create new event
+            
+        }
+    }
+    
+    func createNewEvent() {
+        
+        // get calendar UID
+        var calendarUID:String = ""
+        for cal in eventStore.calendarsForEntityType(.Event) {
+            if cal.title == "TIY Meeting Rooms" { calendarUID = cal.calendarIdentifier }
+        }
+        print(calendarUID)
+        
         let roomEvent = EKEvent(eventStore: eventStore)
-        roomEvent.calendar = eventStore.defaultCalendarForNewEvents
+        roomEvent.calendar = eventStore.calendarWithIdentifier(calendarUID)!
         roomEvent.title = "Reserved Event"
         roomEvent.startDate = timeBeginDatePicker.date
         roomEvent.endDate = NSDate().dateByAddingTimeInterval(Double(timeDurationSlider.value))
-        do {
-            try eventStore.saveEvent(roomEvent, span: .ThisEvent, commit: true)
-        } catch {
-            print("Save Error")
+        
+        // search if previous event is existing at same time
+        let TIYcalendar = eventStore.calendarWithIdentifier(calendarUID)
+        let predicate = eventStore.predicateForEventsWithStartDate(roomEvent.startDate, endDate: roomEvent.endDate, calendars: [TIYcalendar!])
+        print("Predicate:\(predicate)")
+        let events = eventStore.eventsMatchingPredicate(predicate)
+        if events.count == 0 {
+            do {
+                try eventStore.saveEvent(roomEvent, span: .ThisEvent, commit: true)
+            } catch {
+                print("Save Error")
+            }
+            timeDurationSlider.value = 1600 // reset slider value
+            timeDurationLabel.text = "30" // reset label value
+            retrieveRoomBookings()
+            scheduleTableView.reloadData()
+        } else {
+            print("Event Count Error/did not save")
         }
-        timeDurationSlider.value = 1600 // reset slider value
-        timeDurationLabel.text = "30" // reset label value
-        retrieveRoomBookings()
-        scheduleTableView.reloadData()
-        
-        
-        
-        // added predicate from Retrieve method below. Doesn't work
-//        let calendars = eventStore.calendarsForEntityType(.Event)
-//        let predicate = eventStore.predicateForEventsWithStartDate(roomEvent.startDate, endDate: roomEvent.endDate, calendars: calendars)
-//        print("Predicate:\(predicate)")
-//        let events = eventStore.eventsMatchingPredicate(predicate)
-//        if events.count == 0 {
-//            do {
-//                try eventStore.saveEvent(roomEvent, span: .ThisEvent, commit: true)
-//            } catch {
-//                print("Save Error")
-//            }
-//            timeDurationSlider.value = 1600 // reset slider value
-//            timeDurationLabel.text = "30" // reset label value
-//            retrieveRoomBookings()
-//            scheduleTableView.reloadData()
-//        } else {
-//            print("Event Count Error")
-//        }
-//        
-        
-        
+    }
+    
+        // Animate cell insertion
 //        let range = NSMakeRange(0, self.scheduleTableView.numberOfSections)
 //        let sections = NSIndexSet(indexesInRange: range)
 //        self.scheduleTableView.reloadSections(sections, withRowAnimation: .Automatic)
+    
+    
+    func createNewCalendar() {
+        let calendar = EKCalendar(forEntityType: EKEntityType.Event, eventStore: eventStore)
+        calendar.title = "TIY Meeting Rooms"
+        calendar.source = eventStore.defaultCalendarForNewReminders().source
+        do {
+            try eventStore.saveCalendar(calendar, commit: true)
+            print("Created new calendar")
+        } catch {
+            print("Cannot create new calendar")
+        }
         
     }
+    
     
     @IBAction func timeDurationSliderValue(sender: UISlider) {
         print(timeDurationSlider.value)
@@ -179,8 +200,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         setIntroText(introTextLabel)
         retrieveRoomBookings()
         
+//        createNewCalendar()
         
-        timeBeginDatePicker.minimumDate = NSDate() // TODO: Come back to this
+        timeBeginDatePicker.minimumDate = NSDate()
         
 
     }
