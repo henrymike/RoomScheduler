@@ -30,8 +30,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Event Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4NJ-dh-1bf">
-                                                    <rect key="frame" x="58" y="12" width="365" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4NJ-dh-1bf">
+                                                    <rect key="frame" x="58" y="12" width="464" height="21"/>
                                                     <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="sBf-Ig-UHm"/>
@@ -40,21 +40,23 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Start Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QVf-OM-ebF">
-                                                    <rect key="frame" x="454" y="0.0" width="138" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QVf-OM-ebF">
+                                                    <rect key="frame" x="517" y="0.0" width="75" height="21"/>
                                                     <animations/>
                                                     <constraints>
+                                                        <constraint firstAttribute="width" constant="75" id="OmG-mb-Jmu"/>
                                                         <constraint firstAttribute="height" constant="21" id="Yjp-Q6-eBl"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="End Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XXd-Vn-UOM">
-                                                    <rect key="frame" x="454" y="18" width="138" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="End Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XXd-Vn-UOM">
+                                                    <rect key="frame" x="517" y="18" width="75" height="21"/>
                                                     <animations/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="3t8-dm-Rw5"/>
+                                                        <constraint firstAttribute="width" constant="75" id="BdA-2M-p5d"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -73,16 +75,24 @@
                                             <constraints>
                                                 <constraint firstItem="z8x-mE-GAP" firstAttribute="top" secondItem="BMe-Sj-nRm" secondAttribute="topMargin" constant="-5" id="2ke-93-g07"/>
                                                 <constraint firstAttribute="topMargin" secondItem="4NJ-dh-1bf" secondAttribute="top" constant="-4" id="QuY-We-e4s"/>
-                                                <constraint firstItem="QVf-OM-ebF" firstAttribute="leading" secondItem="4NJ-dh-1bf" secondAttribute="trailing" constant="31" id="RFV-GU-w0I"/>
+                                                <constraint firstItem="QVf-OM-ebF" firstAttribute="leading" secondItem="4NJ-dh-1bf" secondAttribute="trailing" constant="18" id="RFV-GU-w0I"/>
                                                 <constraint firstItem="4NJ-dh-1bf" firstAttribute="leading" secondItem="z8x-mE-GAP" secondAttribute="trailing" constant="8" id="UN6-n1-Kl3"/>
                                                 <constraint firstItem="XXd-Vn-UOM" firstAttribute="width" secondItem="QVf-OM-ebF" secondAttribute="width" id="Ujb-jo-2LH"/>
                                                 <constraint firstItem="z8x-mE-GAP" firstAttribute="leading" secondItem="BMe-Sj-nRm" secondAttribute="leadingMargin" constant="7" id="Z9p-qU-QCJ"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="QVf-OM-ebF" secondAttribute="trailing" id="ejr-uh-zj1"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="XXd-Vn-UOM" secondAttribute="trailing" id="hHw-Sa-cc1"/>
-                                                <constraint firstItem="XXd-Vn-UOM" firstAttribute="leading" secondItem="4NJ-dh-1bf" secondAttribute="trailing" constant="31" id="opP-qg-vd6"/>
+                                                <constraint firstItem="XXd-Vn-UOM" firstAttribute="leading" secondItem="4NJ-dh-1bf" secondAttribute="trailing" constant="-45" id="opP-qg-vd6"/>
+                                                <constraint firstItem="QVf-OM-ebF" firstAttribute="leading" secondItem="4NJ-dh-1bf" secondAttribute="trailing" constant="-5" id="p5l-cF-VbT"/>
                                                 <constraint firstItem="XXd-Vn-UOM" firstAttribute="top" secondItem="QVf-OM-ebF" secondAttribute="bottom" constant="-3" id="wkY-F4-ovR"/>
                                                 <constraint firstItem="QVf-OM-ebF" firstAttribute="top" secondItem="BMe-Sj-nRm" secondAttribute="topMargin" constant="-8" id="xvK-kH-YF6"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="RFV-GU-w0I"/>
+                                                    <exclude reference="Ujb-jo-2LH"/>
+                                                    <exclude reference="opP-qg-vd6"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <animations/>
                                         <connections>
