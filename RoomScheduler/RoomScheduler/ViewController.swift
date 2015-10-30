@@ -31,7 +31,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let introMuteString = NSMutableAttributedString()
         let font1 = UIFont(name: "HelveticaNeue", size: 16.0)
         let attrib1 = [NSFontAttributeName: font1!]
-        let titleAttribString = NSAttributedString(string: "Book a Room\n", attributes: attrib1)
+        let titleAttribString = NSAttributedString(string: "Book a Meeting Room\n", attributes: attrib1)
         
         let font2 = UIFont(name: "HelveticaNeue-LightItalic", size: 12.0)
         let subtitleAttribString = NSAttributedString(string: "choose a date and time to get started", attributes: [NSFontAttributeName : font2!, NSForegroundColorAttributeName : UIColor.darkGrayColor()])
