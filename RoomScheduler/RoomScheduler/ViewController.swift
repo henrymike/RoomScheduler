@@ -24,26 +24,23 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     //MARK: - Display Methods
     
     func setIntroText (sender: UILabel) {
-        introTextLabel.text = "Book a Room \nchoose a date and time to get started"
-    }
-    
-    func createAttributedString() {
-        let myMuteString = NSMutableAttributedString()
-        let font1 = UIFont(name: "Avenir-Light", size: 14.0)
+//        introTextLabel.text = "Book a Room \nchoose a date and time to get started"
+//    }
+//    
+//    func createAttributedString() {
+        let introMuteString = NSMutableAttributedString()
+        let font1 = UIFont(name: "HelveticaNeue", size: 16.0)
         let attrib1 = [NSFontAttributeName: font1!]
+        let titleAttribString = NSAttributedString(string: "Book a Room\n", attributes: attrib1)
         
-        let introAttribString = NSAttributedString(string: "My name is ", attributes: attrib1)
-        let font2 = UIFont(name: "AvenirNext-Bold", size: 16.0)
+        let font2 = UIFont(name: "HelveticaNeue-LightItalic", size: 12.0)
+        let subtitleAttribString = NSAttributedString(string: "choose a date and time to get started", attributes: [NSFontAttributeName : font2!, NSForegroundColorAttributeName : UIColor.darkGrayColor()])
         
-        let nameAttribString = NSAttributedString(string: "Mike!", attributes: [NSFontAttributeName : font2!, NSForegroundColorAttributeName : UIColor.redColor()])
+        introMuteString.appendAttributedString(titleAttribString)
+        introMuteString.appendAttributedString(subtitleAttribString)
         
-        let closeAttribString = NSAttributedString(string: " and don't mess", attributes: attrib1)
+        introTextLabel.attributedText = introMuteString
         
-        myMuteString.appendAttributedString(introAttribString)
-        myMuteString.appendAttributedString(nameAttribString)
-        myMuteString.appendAttributedString(closeAttribString)
-        
-//        attribLabel.attributedText = myMuteString
     }
     
     
@@ -130,11 +127,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.eventTitleLabel.text = booking.title
         
         let startDateFormatter = NSDateFormatter()
-        startDateFormatter.dateFormat = "hh:mm a"
+        startDateFormatter.dateFormat = "h:mm a"
         cell.eventStartLabel.text = startDateFormatter.stringFromDate(booking.startDate)
         
         let endDateFormatter = NSDateFormatter()
-        endDateFormatter.dateFormat = "hh:mm a"
+        endDateFormatter.dateFormat = "h:mm a"
         cell.eventEndLabel.text = endDateFormatter.stringFromDate(booking.endDate)
         
         let dayFormatter = NSDateFormatter()
