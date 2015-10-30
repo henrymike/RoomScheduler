@@ -16,9 +16,36 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var timeDurationLabel    :UILabel!
     @IBOutlet weak var scheduleButton       :UIButton!
     @IBOutlet weak var scheduleTableView    :UITableView!
+    @IBOutlet weak var introTextLabel        :UILabel!
     var scheduleArray = []
     let eventStore = EKEventStore()
 
+    
+    //MARK: - Display Methods
+    
+    func setIntroText (sender: UILabel) {
+        introTextLabel.text = "Book a Room \nchoose a date and time to get started"
+    }
+    
+    func createAttributedString() {
+        let myMuteString = NSMutableAttributedString()
+        let font1 = UIFont(name: "Avenir-Light", size: 14.0)
+        let attrib1 = [NSFontAttributeName: font1!]
+        
+        let introAttribString = NSAttributedString(string: "My name is ", attributes: attrib1)
+        let font2 = UIFont(name: "AvenirNext-Bold", size: 16.0)
+        
+        let nameAttribString = NSAttributedString(string: "Mike!", attributes: [NSFontAttributeName : font2!, NSForegroundColorAttributeName : UIColor.redColor()])
+        
+        let closeAttribString = NSAttributedString(string: " and don't mess", attributes: attrib1)
+        
+        myMuteString.appendAttributedString(introAttribString)
+        myMuteString.appendAttributedString(nameAttribString)
+        myMuteString.appendAttributedString(closeAttribString)
+        
+//        attribLabel.attributedText = myMuteString
+    }
+    
     
     //MARK: - Room Scheduler Methods
     
@@ -32,12 +59,35 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         do {
             try eventStore.saveEvent(roomEvent, span: .ThisEvent, commit: true)
         } catch {
-            print("Error")
+            print("Save Error")
         }
         timeDurationSlider.value = 1600 // reset slider value
         timeDurationLabel.text = "30" // reset label value
         retrieveRoomBookings()
         scheduleTableView.reloadData()
+        
+        
+        
+        // added predicate from Retrieve method below. Doesn't work
+//        let calendars = eventStore.calendarsForEntityType(.Event)
+//        let predicate = eventStore.predicateForEventsWithStartDate(roomEvent.startDate, endDate: roomEvent.endDate, calendars: calendars)
+//        print("Predicate:\(predicate)")
+//        let events = eventStore.eventsMatchingPredicate(predicate)
+//        if events.count == 0 {
+//            do {
+//                try eventStore.saveEvent(roomEvent, span: .ThisEvent, commit: true)
+//            } catch {
+//                print("Save Error")
+//            }
+//            timeDurationSlider.value = 1600 // reset slider value
+//            timeDurationLabel.text = "30" // reset label value
+//            retrieveRoomBookings()
+//            scheduleTableView.reloadData()
+//        } else {
+//            print("Event Count Error")
+//        }
+//        
+        
         
 //        let range = NSMakeRange(0, self.scheduleTableView.numberOfSections)
 //        let sections = NSIndexSet(indexesInRange: range)
@@ -129,7 +179,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
         checkEKAuthorizationStatus(.Event)
         checkEKAuthorizationStatus(.Reminder)
-        
+        setIntroText(introTextLabel)
         retrieveRoomBookings()
         
         

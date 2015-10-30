@@ -101,18 +101,34 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ebb-gy-lTZ">
                                 <rect key="frame" x="0.0" y="64" width="600" height="87"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swl-cL-sor">
-                                        <rect key="frame" x="279" y="17" width="42" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="swl-cL-sor">
+                                        <rect key="frame" x="117" y="8" width="475" height="71"/>
                                         <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="71" id="j35-6R-wnJ"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_tiy" translatesAutoresizingMaskIntoConstraints="NO" id="at6-D3-RMM">
+                                        <rect key="frame" x="8" y="8" width="95" height="61"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="95" id="Ef6-b8-Q9H"/>
+                                            <constraint firstAttribute="height" constant="61" id="cIA-3K-lBh"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="swl-cL-sor" secondAttribute="trailing" constant="8" id="2NK-iX-rNZ"/>
+                                    <constraint firstItem="swl-cL-sor" firstAttribute="top" secondItem="ebb-gy-lTZ" secondAttribute="top" constant="8" id="7ru-94-4wZ"/>
+                                    <constraint firstItem="at6-D3-RMM" firstAttribute="leading" secondItem="ebb-gy-lTZ" secondAttribute="leading" constant="8" id="BWw-ah-DuW"/>
+                                    <constraint firstItem="swl-cL-sor" firstAttribute="leading" secondItem="at6-D3-RMM" secondAttribute="trailing" constant="14" id="Cic-C9-hQN"/>
                                     <constraint firstAttribute="height" constant="87" id="OSD-RS-eec"/>
+                                    <constraint firstItem="at6-D3-RMM" firstAttribute="top" secondItem="ebb-gy-lTZ" secondAttribute="top" constant="8" id="xua-cs-RpO"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tlE-TW-9gG">
@@ -248,6 +264,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Room Scheduler" id="YNz-nb-H8J"/>
                     <connections>
+                        <outlet property="introTextLabel" destination="swl-cL-sor" id="ssx-iT-auT"/>
                         <outlet property="scheduleButton" destination="Ri9-rk-JyH" id="UfC-DC-Ebe"/>
                         <outlet property="scheduleTableView" destination="LPa-jM-wTc" id="beb-Ca-Btc"/>
                         <outlet property="timeBeginDatePicker" destination="yXU-RZ-y8e" id="KgM-gn-Ey5"/>
@@ -279,4 +296,7 @@
             <point key="canvasLocation" x="372" y="316"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo_tiy" width="100" height="86"/>
+    </resources>
 </document>
