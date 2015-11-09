@@ -23,7 +23,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     let eventStore = EKEventStore()
 
     
-    //MARK: - Display Methods
+    //MARK: - Intro Display Methods
     
     func setIntroText (sender: UILabel) {
         let introMuteString = NSMutableAttributedString()
@@ -45,36 +45,31 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     @IBAction func newRoomBooking(sender: UIButton) {
         print("Schedule It button pressed")
-        
-        // check for calendar entity
+        // check for calendar entity and create if needed
         let calendars = eventStore.calendarsForEntityType(.Event)
         let filteredCalendars = calendars.filter {$0.title == "TIY Meeting Rooms"}
         if filteredCalendars.isEmpty {
             print("No TIY calendar found")
-            createNewCalendar() // create a new calendar first, then
-            createNewEvent() // create new event
+            createNewCalendar()
+            createNewEvent()
         } else {
             print("TIY Calendar found")
-            createNewEvent() // create new event
-            
+            createNewEvent()
         }
     }
     
     func createNewEvent() {
-        
         // get calendar UID
         var calendarUID:String = ""
         for cal in eventStore.calendarsForEntityType(.Event) {
             if cal.title == "TIY Meeting Rooms" { calendarUID = cal.calendarIdentifier }
         }
-//        print(calendarUID)
         
         let roomEvent = EKEvent(eventStore: eventStore)
         roomEvent.calendar = eventStore.calendarWithIdentifier(calendarUID)!
         roomEvent.title = "Reserved Event"
         roomEvent.startDate = timeBeginDatePicker.date
         roomEvent.endDate = (timeBeginDatePicker.date).dateByAddingTimeInterval(Double(timeDurationSlider.value))
-//        roomEvent.endDate = NSDate().dateByAddingTimeInterval(Double(timeDurationSlider.value))
         
         // search if previous event is existing at same time
         let TIYcalendar = eventStore.calendarWithIdentifier(calendarUID)
@@ -116,19 +111,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
-    
-    @IBAction func timeDurationSliderValue(sender: UISlider) {
-        print(timeDurationSlider.value)
-        timeDurationLabel.text = String(Int(timeDurationSlider.value / 60))
-//        let addTime = timeDurationSlider.value
-//        let endTime = NSNumberFormatter(
-    }
-    
     @IBAction func retrieveRoomBookings() {
-        let calendars = eventStore.calendarsForEntityType(.Event)
+        var calendarUID:String = ""
+        for cal in eventStore.calendarsForEntityType(.Event) {
+            if cal.title == "TIY Meeting Rooms" { calendarUID = cal.calendarIdentifier }
+        }
+        let roomEvent = EKEvent(eventStore: eventStore)
+        roomEvent.calendar = eventStore.calendarWithIdentifier(calendarUID)!
+        let TIYcalendar = eventStore.calendarWithIdentifier(calendarUID)
         let startDate = NSDate() // time starting now
         let endDate = NSDate(timeIntervalSinceNow: 604800) // 7 days in advance
-        let predicate = eventStore.predicateForEventsWithStartDate(startDate, endDate: endDate, calendars: calendars)
+        let predicate = eventStore.predicateForEventsWithStartDate(startDate, endDate: endDate, calendars: [TIYcalendar!])
         let events = eventStore.eventsMatchingPredicate(predicate)
         if events.count > 0 {
             for event in events {
@@ -139,6 +132,12 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //            print(scheduleArray)
         }
     }
+    
+    @IBAction func timeDurationSliderValue(sender: UISlider) {
+        print(timeDurationSlider.value)
+        timeDurationLabel.text = String(Int(timeDurationSlider.value / 60))
+    }
+    
     
     //MARK: - Table View Methods
     
@@ -204,15 +203,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         checkEKAuthorizationStatus(.Reminder)
         setIntroText(introTextLabel)
         retrieveRoomBookings()
-        
-//        createNewCalendar()
         timeBeginDatePicker.minimumDate = NSDate()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-
-    }
-
 
 }
