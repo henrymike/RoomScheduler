@@ -11,6 +11,8 @@ import EventKit
 
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    //MARK: - Properties
+    
     @IBOutlet weak var timeBeginDatePicker  :UIDatePicker!
     @IBOutlet weak var timeDurationSlider   :UISlider!
     @IBOutlet weak var timeDurationLabel    :UILabel!
@@ -65,24 +67,26 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         for cal in eventStore.calendarsForEntityType(.Event) {
             if cal.title == "TIY Meeting Rooms" { calendarUID = cal.calendarIdentifier }
         }
-        print(calendarUID)
+//        print(calendarUID)
         
         let roomEvent = EKEvent(eventStore: eventStore)
         roomEvent.calendar = eventStore.calendarWithIdentifier(calendarUID)!
         roomEvent.title = "Reserved Event"
         roomEvent.startDate = timeBeginDatePicker.date
-        roomEvent.endDate = NSDate().dateByAddingTimeInterval(Double(timeDurationSlider.value))
+        roomEvent.endDate = (timeBeginDatePicker.date).dateByAddingTimeInterval(Double(timeDurationSlider.value))
+//        roomEvent.endDate = NSDate().dateByAddingTimeInterval(Double(timeDurationSlider.value))
         
         // search if previous event is existing at same time
         let TIYcalendar = eventStore.calendarWithIdentifier(calendarUID)
         let predicate = eventStore.predicateForEventsWithStartDate(roomEvent.startDate, endDate: roomEvent.endDate, calendars: [TIYcalendar!])
-        print("Predicate:\(predicate)")
+        print("Prev Event Predicate:\(predicate)")
         let events = eventStore.eventsMatchingPredicate(predicate)
         if events.count == 0 {
             do {
                 try eventStore.saveEvent(roomEvent, span: .ThisEvent, commit: true)
+                print("New Event Saved/new event created")
             } catch {
-                print("Save Error")
+                print("New Event Error/did not create")
             }
             timeDurationSlider.value = 1600 // reset slider value
             timeDurationLabel.text = "30" // reset label value
@@ -128,7 +132,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let events = eventStore.eventsMatchingPredicate(predicate)
         if events.count > 0 {
             for event in events {
-                print(event.title)
+                print("Retrieved Event: \(event.title)")
             }
             scheduleArray = events
 //            print(scheduleArray)
@@ -182,7 +186,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         switch status {
         case .NotDetermined:
             print("Not Determined")
-            requestAccesstoEKType(type) // we added this after we crated the method above
+            requestAccesstoEKType(type)
         case .Authorized:
             print("Authorized")
         case .Restricted, .Denied:
@@ -201,10 +205,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         retrieveRoomBookings()
         
 //        createNewCalendar()
-        
         timeBeginDatePicker.minimumDate = NSDate()
-        
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -214,7 +215,3 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
 
 }
-
-
-/// do a search just like we do when we fetch the array, except if we return greater than 0, don't allow the event to be saved; use in-class example if needed
-
