@@ -124,7 +124,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //        let endTime = NSNumberFormatter(
     }
     
-    func retrieveRoomBookings() {
+    @IBAction func retrieveRoomBookings() {
         let calendars = eventStore.calendarsForEntityType(.Event)
         let startDate = NSDate() // time starting now
         let endDate = NSDate(timeIntervalSinceNow: 604800) // 7 days in advance
@@ -135,6 +135,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 print("Retrieved Event: \(event.title)")
             }
             scheduleArray = events
+            scheduleTableView.reloadData()
 //            print(scheduleArray)
         }
     }

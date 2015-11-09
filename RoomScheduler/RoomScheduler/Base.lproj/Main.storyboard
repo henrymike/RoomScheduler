@@ -272,7 +272,13 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Room Scheduler" id="YNz-nb-H8J"/>
+                    <navigationItem key="navigationItem" title="Room Scheduler" id="YNz-nb-H8J">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="WNB-KH-gCs">
+                            <connections>
+                                <action selector="retrieveRoomBookings" destination="BYZ-38-t0r" id="CZC-ga-uES"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="introTextLabel" destination="swl-cL-sor" id="ssx-iT-auT"/>
                         <outlet property="scheduleButton" destination="Ri9-rk-JyH" id="UfC-DC-Ebe"/>
