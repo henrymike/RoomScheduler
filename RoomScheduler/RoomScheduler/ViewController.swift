@@ -18,7 +18,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var timeDurationLabel    :UILabel!
     @IBOutlet weak var scheduleButton       :UIButton!
     @IBOutlet weak var scheduleTableView    :UITableView!
-    @IBOutlet weak var introTextLabel        :UILabel!
+    @IBOutlet weak var introTextLabel       :UILabel!
     var scheduleArray = []
     var permissionsManager = PermissionsManager.sharedInstance
     let eventStore = EKEventStore()
