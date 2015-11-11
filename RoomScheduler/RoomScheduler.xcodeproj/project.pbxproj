@@ -13,6 +13,7 @@
 		55250AD01BE2770100D36052 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55250ACF1BE2770100D36052 /* Assets.xcassets */; };
 		55250AD31BE2770100D36052 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55250AD11BE2770100D36052 /* LaunchScreen.storyboard */; };
 		55250ADB1BE2ADA900D36052 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55250ADA1BE2ADA900D36052 /* CustomTableViewCell.swift */; };
+		556E9F1D1BF37E660097EEAF /* PermissionsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 556E9F1C1BF37E660097EEAF /* PermissionsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		55250AD21BE2770100D36052 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		55250AD41BE2770100D36052 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55250ADA1BE2ADA900D36052 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		556E9F1C1BF37E660097EEAF /* PermissionsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,12 +61,29 @@
 				55250AC81BE2770100D36052 /* AppDelegate.swift */,
 				55250ACA1BE2770100D36052 /* ViewController.swift */,
 				55250ACC1BE2770100D36052 /* Main.storyboard */,
-				55250ADA1BE2ADA900D36052 /* CustomTableViewCell.swift */,
+				556E9F1E1BF37F650097EEAF /* Managers */,
+				556E9F1B1BF37E1A0097EEAF /* Subclasses */,
 				55250ACF1BE2770100D36052 /* Assets.xcassets */,
 				55250AD11BE2770100D36052 /* LaunchScreen.storyboard */,
 				55250AD41BE2770100D36052 /* Info.plist */,
 			);
 			path = RoomScheduler;
+			sourceTree = "<group>";
+		};
+		556E9F1B1BF37E1A0097EEAF /* Subclasses */ = {
+			isa = PBXGroup;
+			children = (
+				55250ADA1BE2ADA900D36052 /* CustomTableViewCell.swift */,
+			);
+			name = Subclasses;
+			sourceTree = "<group>";
+		};
+		556E9F1E1BF37F650097EEAF /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				556E9F1C1BF37E660097EEAF /* PermissionsManager.swift */,
+			);
+			name = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,6 +159,7 @@
 			files = (
 				55250ADB1BE2ADA900D36052 /* CustomTableViewCell.swift in Sources */,
 				55250ACB1BE2770100D36052 /* ViewController.swift in Sources */,
+				556E9F1D1BF37E660097EEAF /* PermissionsManager.swift in Sources */,
 				55250AC91BE2770100D36052 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

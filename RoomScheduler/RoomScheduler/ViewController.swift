@@ -20,6 +20,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var scheduleTableView    :UITableView!
     @IBOutlet weak var introTextLabel        :UILabel!
     var scheduleArray = []
+    var permissionsManager = PermissionsManager.sharedInstance
     let eventStore = EKEventStore()
 
     
@@ -38,6 +39,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         introMuteString.appendAttributedString(subtitleAttribString)
         
         introTextLabel.attributedText = introMuteString
+    }
+    
+    
+    //MARK: - Alert Methods
+    
+    func addEventErrorAlert() {
+        let addEventErrorAlert = UIAlertController(title: "Could Not Reserve Room", message: "Another meeting already exists", preferredStyle: .Alert)
+        addEventErrorAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+        self.presentViewController(addEventErrorAlert, animated: true, completion: nil)
     }
     
     
@@ -89,14 +99,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             scheduleTableView.reloadData()
         } else {
             print("Event Count Error/did not save")
+            addEventErrorAlert()
         }
     }
-    
-        // Animate cell insertion
-//        let range = NSMakeRange(0, self.scheduleTableView.numberOfSections)
-//        let sections = NSIndexSet(indexesInRange: range)
-//        self.scheduleTableView.reloadSections(sections, withRowAnimation: .Automatic)
-    
     
     func createNewCalendar() {
         let calendar = EKCalendar(forEntityType: EKEntityType.Event, eventStore: eventStore)
@@ -129,7 +134,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
             scheduleArray = events
             scheduleTableView.reloadData()
-//            print(scheduleArray)
         }
     }
     
@@ -167,40 +171,14 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         return cell
     }
-    
-    
-    //MARK: - Permission Methods
 
-    func requestAccesstoEKType(type: EKEntityType) {
-        eventStore.requestAccessToEntityType(type) { (accessGranted, Error) -> Void in
-            if accessGranted {
-                print("Granted")
-            } else {
-                print("Not Granted")
-            }
-        }
-    }
-    
-    func checkEKAuthorizationStatus(type: EKEntityType) {
-        let status = EKEventStore.authorizationStatusForEntityType(type)
-        switch status {
-        case .NotDetermined:
-            print("Not Determined")
-            requestAccesstoEKType(type)
-        case .Authorized:
-            print("Authorized")
-        case .Restricted, .Denied:
-            print("Restricted/Denied")
-        }
-    }
-    
     
     //MARK: - Life Cycle Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        checkEKAuthorizationStatus(.Event)
-        checkEKAuthorizationStatus(.Reminder)
+        permissionsManager.checkEKAuthorizationStatus(.Event)
+        permissionsManager.checkEKAuthorizationStatus(.Reminder)
         setIntroText(introTextLabel)
         retrieveRoomBookings()
         timeBeginDatePicker.minimumDate = NSDate()
