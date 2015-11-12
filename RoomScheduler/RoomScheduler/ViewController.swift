@@ -183,5 +183,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         retrieveRoomBookings()
         timeBeginDatePicker.minimumDate = NSDate()
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        retrieveRoomBookings()
+    }
 
 }
