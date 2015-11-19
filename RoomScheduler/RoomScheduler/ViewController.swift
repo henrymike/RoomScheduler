@@ -188,5 +188,4 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewWillAppear(animated)
         retrieveRoomBookings()
     }
-
 }

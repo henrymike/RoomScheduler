@@ -1,20 +1,16 @@
-# The Iron Yard - Mobile Engineering (iOS)
-### DC 2015 Fall
+# RoomScheduler
 
-## Day 28 Homework
-### RoomScheduler
+### How It Works
+A calendar-booking tool that allows a room to be reserved for time and length on a single page using no more than 2 gestures. Also checks if a custom calendar already exists, and if not, creates one.
 
-TIY DC is a small campus. However, from time-to-time, especially as the end of cohort nears, private space becomes a premium. So, The Iron Yard would like you to build the prototype for a room scheduling system for them. If the app is successful, they may ask you to eventually make it network ready (likely via Parse). For now, the prototype will only be on your phone.
+### Features
+* Adds events in a custom-created calendar and automatically checks if that calendar already exists; if not, it creates it on the fly
+* Time is pre-set to current time, so all the user has to do is select the meeting duration and tap ‘Schedule’ to book the room immediately
+* Existing and newly created events display with a custom icon to denote the day they occur
 
-MINIMUM requirements for this entire assignment:
-* It must be written in Swift
-* Create an interface that allows you to block times on the calendar for a single room (the back corner team room)
-* The scheduled time slots should be displayed in a table view (very likely with custom cells) sorted from the curent/next one to the ones in the future
-* Calendar items should not be allowed to overlap
-* Add a reminder for the user when they walk into the building to check the appointments for the room
+### Future
+* Allow more than one room to be booked
+* Allow for color-coding of events based on category
+* Allow events to be managed (edited/deleted) from within the app
 
-HARD MODE #1 requirements for this assignment:
-* Divide the TableView into sections (one for each day)
-
-HARD MODE #2 requirements for this assignment:
-* Use custom headers & footers for each section
+![RoomScheduler](http://imgur.com/RBo44vq.png)
